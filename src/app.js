@@ -55,9 +55,9 @@ function createMenu() {
       submenu: [
         {
           label: "Conexión",
-          click: ()=>{
-            createWindow("CONFIRURACIONES", 800,600,"config.html")
-        }
+          click: () => {
+            createWindow({ view_name: "config.html", dev: true })
+          }
         }
       ]
     },
@@ -72,13 +72,12 @@ function createMenu() {
   return template;
 }
 
-function createWindow(
+function createWindow({
   title = "biblioteca",
   width = 1200,
   height = 800,
   view_name = "index.html",
-  preload = "index.js"
-) {
+  dev = false }) {
   const win = new BrowserWindow({
     title,
     width,
@@ -90,12 +89,12 @@ function createWindow(
   });
 
   win.loadFile(view_path(view_name));
-
+  if (dev) win.webContents.toggleDevTools()
   return win;
 }
 
 app.whenReady().then(() => {
-  mainWindow = createWindow();
+  mainWindow = createWindow({});
 
   const menu = Menu.buildFromTemplate(createMenu());
   Menu.setApplicationMenu(menu);
@@ -104,7 +103,7 @@ app.whenReady().then(() => {
 
 
 ipcMain.on("config:save", (ev, data) => {
-  dialog.showMessageBox(null, {
+  dialog.showMessageBox(configWindow, {
     title: "Guardando...",
     message: "¿Está a punto de guardar la configuración actual, desea continuar?",
     noLink: true,
