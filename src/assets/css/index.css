@@ -1,0 +1,10 @@
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
+#camera{
+    width: 100%;
+}
+
+.banner{
+    background-color: #00A0DF;
+}
