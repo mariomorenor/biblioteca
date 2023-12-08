@@ -1,8 +1,27 @@
-const { app, BrowserWindow, dialog, Menu } = require("electron");
+const { app, BrowserWindow, dialog, Menu, ipcMain } = require("electron");
 const path = require("path");
 
+const Store = require('electron-store');
+const store = new Store();
+
+var config = store.get("config")
+try {
+
+  console.log(config.server);
+
+} catch (error) {
+  store.set("config.server.url", "http://localhost:8069");
+  store.set("config.server.db", "pucesd");
+  store.set("config.server.user", "pruebas");
+  store.set("config.server.password", "1234");
+  config = store.get("config")
+
+}
+
+
 const view_path = (view_name) => path.resolve(__dirname, "views", view_name);
-const preload_path = (preload_name)=>path.resolve(__dirname,"preloads",preload_name)
+
+
 // Windows
 var mainWindow = null;
 
@@ -69,4 +88,25 @@ app.whenReady().then(() => {
 
   const menu = Menu.buildFromTemplate(createMenu());
   Menu.setApplicationMenu(menu);
+});
+
+
+
+ipcMain.on("config:save", (ev, data) => {
+  dialog.showMessageBox(null, {
+    title: "Guardando...",
+    message: "¿Está a punto de guardar la configuración actual, desea continuar?",
+    noLink: true,
+    buttons: ["Cancelar", "Aceptar"]
+  }).then(res => {
+    if (res.response != 0) {
+      store.set("config.server", data);
+      config.server = data;
+    }
+  })
+});
+
+
+ipcMain.handle("config:get", (ev, data) => {
+  return config;
 });
