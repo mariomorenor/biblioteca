@@ -5,7 +5,7 @@ const view_path = (view_name) => path.resolve(__dirname, "views", view_name);
 const preload_path = (preload_name)=>path.resolve(__dirname,"preloads",preload_name)
 // Windows
 var mainWindow = null;
-
+var configWindow = null;
 function createMenu() {
   const template = [
     {
@@ -30,6 +30,17 @@ function createMenu() {
           },
         },
       ],
+    },
+    {
+      label: "Configuraciones",
+      submenu: [
+        {
+          label: "Conexión",
+          click: ()=>{
+            createWindow("CONFIRURACIONES", 800,600,"config.html")
+        }
+        }
+      ]
     },
     {
       label: "Developer",
