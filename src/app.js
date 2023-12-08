@@ -54,9 +54,8 @@ function createWindow(
     width,
     height,
     webPreferences: {
-      nodeIntegration: false,
-      contextIsolation: true,
-      preload:preload_path(preload),
+      nodeIntegration: true,
+      contextIsolation: false,
     },
   });
 

@@ -1,9 +1,14 @@
-async function startCamera() {
-    const stream = await navigator.mediaDevices.getUserMedia({video:true});
-    const video = document.getElementById("camera");
+const { Html5Qrcode } = require("html5-qrcode");
 
-    video.srcObject = stream;
-    video.play();
-}
+const html5QrCode = new Html5Qrcode("reader");
 
-startCamera();
+
+const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+  /* handle success */
+    console.log(decodedText);
+
+};
+
+const config = { fps: 2, qrbox: { width: 250, height: 250 } };
+
+html5QrCode.start({ facingMode: "user" }, config, qrCodeSuccessCallback);
