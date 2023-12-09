@@ -19,30 +19,31 @@
             <div class="card-content">
                 <div class="row">
                     <div class="col-5">
-                        <!-- <video id="camera"></video> -->
                         <div id="reader" width="600px"></div>
+                        <audio src="../assets/sounds/sound.mp3" id="sound"></audio>
+                        <audio src="../assets/sounds/error.mp3" id="error-sound"></audio>
+                        <h3 class="mt-2">Últimos Ingresos</h3>
+                        <ul class="list-group" id="records">
+                        </ul>
                     </div>
                     <div class="col-7">
                         <div class="form-group">
                             <label for="" class="fs-3 fw-bold">Nombres</label>
-                            <input type="text" class="form-control fs-1" value="JONATHAN MORENO" readonly>
+                            <input type="text" class="form-control fs-1" id="name" readonly>
                         </div>
                         <div class="form-group">
                             <label for="" class="fs-3 fw-bold">Apellidos</label>
-                            <input type="text" class="form-control fs-1" readonly>
+                            <input type="text" class="form-control fs-1" id="last_name" readonly>
                         </div>
                         <div class="form-group">
                             <label for="" class="fs-3 fw-bold">Cédula</label>
-                            <input type="text" class="form-control fs-1" readonly>
+                            <input type="text" class="form-control fs-1" id="dni" readonly>
                         </div>
                         <div class="form-group">
                             <label for="" class="fs-3 fw-bold">Correo</label>
-                            <input type="text" class="form-control fs-1" readonly>
+                            <input type="text" class="form-control fs-1" id="email" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="row m-4">
-           
                 </div>
             </div>
         </div>
