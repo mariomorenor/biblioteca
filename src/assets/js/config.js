@@ -10,10 +10,13 @@ let btnSave = document.getElementById("btnSave");
 
 btnSave.addEventListener("click", () => {
     ipcRenderer.send("config:save", {
-        url: inpUrl.value,
-        db: inpDb.value,
-        user: inpUser.value,
-        password: inpPassword.value
+        server:{
+            url: inpUrl.value,
+            db: inpDb.value,
+            user: inpUser.value,
+            password: inpPassword.value,
+        },
+        seccion: inpSeccion.value
     });
 })
 

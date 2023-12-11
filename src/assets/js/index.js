@@ -1,5 +1,4 @@
 const { ipcRenderer } = require("electron");
-const { Html5Qrcode } = require("html5-qrcode");
 const moment = require("moment");
 const Swal = require("sweetalert2");
 window.$ = require("jquery");

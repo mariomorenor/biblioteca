@@ -4,7 +4,8 @@
   "description": "Aplicacion para lectura de códigos qr para el ingreso a biblioteca",
   "main": "src/app.js",
   "scripts": {
-    "dev": "electron ."
+    "dev": "electron .",
+    "dist": "electron-builder -w"
   },
   "keywords": [],
   "author": "Jonathan Moreno, Jordan Herrera",
@@ -24,7 +25,11 @@
     "sqlite3": "^5.1.6",
     "sweetalert2": "^11.10.1"
   },
-  "build":{
-    "appId":"jm.dev.biblioteca"
+  "build": {
+    "appId": "jm.dev.biblioteca",
+    "win": {
+      "target": "nsis",
+      "icon":"qr.png"
+    }
   }
 }
