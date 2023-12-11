@@ -1,3 +1,4 @@
+const { ipcRenderer } = require("electron");
 const { Html5Qrcode } = require("html5-qrcode");
 const moment = require("moment");
 const Swal = require("sweetalert2");
@@ -58,6 +59,7 @@ function sendData(user) {
   makeSound({ type: "success" });
   generateHistory(user);
   showInfo(user);
+  ipcRenderer.send("record:save",user)
 }
 
 function removeFromCache(user) {

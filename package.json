@@ -14,10 +14,13 @@
     "html5-qrcode": "^2.3.8"
   },
   "dependencies": {
+    "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
     "electron-store": "^8.1.0",
     "jquery": "^3.7.1",
     "moment": "^2.29.4",
+    "sequelize": "^6.35.1",
+    "sqlite3": "^5.1.6",
     "sweetalert2": "^11.10.1"
   }
 }

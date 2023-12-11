@@ -4,6 +4,7 @@ let inpUrl = document.getElementById("url");
 let inpDb = document.getElementById("db");
 let inpUser = document.getElementById("user");
 let inpPassword = document.getElementById("password");
+let inpSeccion = document.getElementById("up/down")
 
 let btnSave = document.getElementById("btnSave");
 
@@ -17,11 +18,12 @@ btnSave.addEventListener("click", () => {
 })
 
 window.onload = () => {
-    ipcRenderer.invoke("config:get").then(({ server }) => {
-        inpUrl.value = server.url;
-        inpDb.value = server.db;
-        inpUser.value = server.user;
-        inpPassword.value = server.password
+    ipcRenderer.invoke("config:get").then((config) => {
+        inpUrl.value = config.server.url;
+        inpDb.value = config.server.db;
+        inpUser.value = config.server.user;
+        inpPassword.value = config.server.password
+        inpSeccion.value = config.seccion
 
     })
 }
