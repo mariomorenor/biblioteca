@@ -9,13 +9,13 @@ try {
 
   console.log(config.server);
 
+
 } catch (error) {
   store.set("config.server.url", "http://localhost:8069");
   store.set("config.server.db", "pucesd");
   store.set("config.server.user", "pruebas");
   store.set("config.server.password", "1234");
-  config = store.get("config")
-
+  config = store.get("config");
 }
 
 
@@ -49,17 +49,19 @@ function createMenu() {
           },
         },
       ],
+
+
     },
     {
       label: "Configuraciones",
-      submenu: [
-        {
-          label: "Conexión",
-          click: () => {
-            createWindow({ view_name: "config.html", dev: true })
-          }
-        }
-      ]
+      click: () => {
+            //configWindow.removeMenu();
+            //mainWindow.setMenu(null);
+
+            //window.removeMenu();
+            configWindow = createWindow({ view_name: "config.html", width:800, height: 358});
+            configWindow.setMenu(null);
+      }
     },
     {
       label: "Developer",
@@ -95,7 +97,8 @@ function createWindow({
 
 app.whenReady().then(() => {
   mainWindow = createWindow({});
-
+  mainWindow.maximize();
+  mainWindow.on("close", () => {app.quit()});
   const menu = Menu.buildFromTemplate(createMenu());
   Menu.setApplicationMenu(menu);
 });
