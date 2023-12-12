@@ -1,9 +1,11 @@
-const { Sequelize, DataTypes, Op } = require('sequelize');
-const path = require('path');
+const { Sequelize, DataTypes, Op } = require("sequelize");
+const path = require("path");
+const { app } = require("electron");
 
 const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.resolve(__dirname, "database.sqlite"),
+  dialect: "sqlite",
+  storage: path.resolve(app.getAppPath(), "database.sqlite"),
+  logging: false,
 });
 
 const records = sequelize.define("records", {
@@ -13,7 +15,7 @@ const records = sequelize.define("records", {
   dni: DataTypes.STRING,
   email: DataTypes.STRING,
   user_id: DataTypes.INTEGER,
-  seccion: DataTypes.STRING
+  seccion: DataTypes.STRING,
 });
 
 records.sync();
@@ -21,5 +23,5 @@ records.sync();
 module.exports = {
   records,
   Op,
-  sequelize
-}
+  sequelize,
+};

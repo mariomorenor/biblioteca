@@ -120,7 +120,8 @@ ipcMain.on("config:save", (ev, data) => {
     buttons: ["Cancelar", "Aceptar"]
   }).then(res => {
     if (res.response != 0) {
-      store.set("config", data);
+      store.set("config.server", {...data.server});
+      store.set("config.seccion", data.seccion);
       config = data;
       odoo.login();
     }
