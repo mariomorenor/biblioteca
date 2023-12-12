@@ -4,7 +4,7 @@ const { app } = require("electron");
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: path.resolve(app.getAppPath(), "database.sqlite"),
+  storage: path.resolve(app.getPath("userData"), "database.sqlite"),
   logging: false,
 });
 
